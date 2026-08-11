@@ -1,0 +1,467 @@
+1. O que é o retorno NaN em Javascript? Cite um tipo de condição em que este tipo pode ser gerado.
+
+NaN significa "Not a Number" (Não é um Número). É retornado quando uma operação matemática não produz um resultado numérico válido.
+
+Exemplo de condição que gera NaN:
+
+javascript
+let resultado = "abc" * 2; 
+console.log(resultado);     
+
+console.log(Math.sqrt(-1)); 
+console.log(0 / 0);         
+console.log(Number("dez")); 
+
+
+2. É possível adicionar uma configuração CSS de múltiplas formas em um código HTML.
+Cite essas formas e dê exemplos de cada uma. Cite também a diferença entre utilizar
+cada uma dessas formas.
+
+a) CSS Inline — aplicado diretamente na tag, via atributo style:
+
+<p style="color: red; font-size: 16px;">Texto em vermelho</p>
+
+b) CSS Interno (embutido) — dentro de <style> no <head> do documento:
+
+<head>
+  <style>
+    p { color: red; font-size: 16px; }
+  </style>
+</head>
+
+c) CSS Externo — em um arquivo .css separado, vinculado com <link>:
+
+<head>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+css
+
+p { color: red; font-size: 16px; }
+
+Inline: maior especificidade, mas difícil de manter (mistura estrutura e estilo), aplicado a um único elemento.
+Interno: válido apenas para a página onde está escrito, útil para páginas únicas ou testes rápidos.
+Externo: reutilizável em várias páginas, facilita manutenção e separa estrutura (HTML) de apresentação (CSS) — é a prática mais recomendada.
+
+3. Escreva as regras CSS para estilizar uma div com a classe .card-produto com as
+seguintes exigências: Largura fixa de 300px e centralizada horizontalmente na página.
+Espaçamento interno (padding) de 20px. Bordas arredondadas em 12px e uma borda
+sólida de 1px na cor cinza claro (#ddd).Cor de fundo branca.
+
+.card-produto {
+  width: 300px;
+  margin: 0 auto;       
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+}
+
+
+4. Diferencie as listas ordenadas (<ol>) das listas não ordenadas (<ul>). Crie um exemplo
+de cada.
+
+
+<ol> (ordered list): os itens são numerados, indicando sequência ou ordem de importância.
+<ul> (unordered list): os itens são marcados com marcadores (bullets), sem indicar ordem específica.
+
+Exemplo:
+
+<h3>Passos para fazer um bolo (ordenado)</h3>
+<ol>
+  <li>Misturar os ingredientes</li>
+  <li>Levar ao forno</li>
+  <li>Deixar esfriar</li>
+</ol>
+
+<h3>Ingredientes (não ordenado)</h3>
+<ul>
+  <li>Farinha</li>
+  <li>Ovos</li>
+  <li>Açúcar</li>
+</ul>
+
+5. O que significa a propriedade display no CSS? Compare o comportamento de block,
+inline e inline-block.
+
+block: o elemento ocupa toda a largura disponível e sempre começa em uma nova linha (ex: <div>, <p>).
+inline: o elemento ocupa apenas o espaço necessário para seu conteúdo, fica na mesma linha de outros elementos, e não aceita width/height/margens verticais (ex: <span>, <a>).
+inline-block: comporta-se como inline (fica na mesma linha), mas aceita width, height, padding e margin como um bloco.
+
+6. Explique o que é o Box Model no CSS e descreva suas partes de dentro para fora.
+
+O Box Model descreve como cada elemento HTML é representado como uma "caixa" retangular, composta por camadas, de dentro para fora:
+
+Content — o conteúdo em si (texto, imagem etc.), com largura/altura definidas por width/height.
+Padding — espaçamento interno entre o conteúdo e a borda.
+Border — a borda que envolve o padding e o conteúdo.
+Margin — espaçamento externo, entre a borda do elemento e os elementos vizinhos.
+
+| margin |
+   | border |
+      | padding |
+         | content |
+
+7. Qual é a função das tags semânticas no HTML5, como <header>, <section>, <article> e
+<footer>? Dê exemplos de uso.
+
+melhora acessibilidade e SEO.
+
+<header>: cabeçalho da página ou de uma seção (logo, título, navegação).
+<section>: agrupa um bloco de conteúdo relacionado, geralmente com um tema próprio.
+<article>: conteúdo independente e autônomo (post de blog, notícia).
+<footer>: rodapé da página ou seção (créditos, contatos, links).
+
+exemplo:
+<header>
+  <h1>Meu Blog</h1>
+</header>
+
+<section>
+  <article>
+    <h2>Título do post</h2>
+    <p>Conteúdo do post...</p>
+  </article>
+</section>
+
+<footer>
+  <p>© 2026 Meu Blog</p>
+</footer>
+
+8. Explique o que é e para que serve o atributo target="_blank" em um link. Quais cuidados
+de segurança devem ser tomados ao utilizá-lo?
+
+Serve para abrir o link em uma nova aba/janela, mantendo a página original aberta.
+
+<a href="https://exemplo.com" target="_blank">Visite o site</a>
+
+Cuidados de segurança: ao usar target="_blank", a página aberta pode acessar o objeto window.opener da página original, permitindo um ataque conhecido como tabnabbing (a nova aba redireciona a aba original para um site malicioso). Para evitar isso, deve-se adicionar:
+
+html
+<a href="https://exemplo.com" target="_blank" rel="noopener noreferrer">Visite o site</a>
+noopener: impede acesso a window.opener.
+noreferrer: além disso, evita o envio do cabeçalho Referer.
+
+9. O que é a propriedade flex no CSS e como ela é usada?
+
+flex é uma propriedade abreviada (shorthand) usada em itens flexíveis (filhos de um container com display: flex), que combina três propriedades:
+
+css
+flex: <flex-grow> <flex-shrink> <flex-basis>;
+flex-grow: quanto o item pode crescer em relação aos demais.
+flex-shrink: quanto o item pode encolher.
+flex-basis: tamanho inicial do item antes de crescer/encolher.
+
+Exemplo:
+
+css
+.container { display: flex; }
+.item { flex: 1; }       
+.item-grande { flex: 2; } 
+
+10. Faça a leitura de um vetor de tamanho 5 de notas. Escreva um código que utilize um
+laço de repetição (for ou for...of) para percorrer o array, calcular e exibir no console a
+soma total e a média aritmética das notas.
+
+const notas = [8.5, 7.0, 9.2, 6.5, 10];
+let soma = 0;
+
+for (const nota of notas) {
+  soma += nota;
+}
+
+const media = soma / notas.length;
+
+console.log("Soma das notas: " + soma);
+console.log("Média aritmética: " + media);
+
+11. Crie um objeto com informações de um produto (nome, preco, emEstoque). Se
+emEstoque for true, exiba "Produto disponível"; caso contrário, "Produto indisponível".
+
+
+const produto = {
+  nome: "Notebook",
+  preco: 3500.00,
+  emEstoque: true
+};
+
+if (produto.emEstoque) {
+  console.log("Produto disponível");
+} else {
+  console.log("Produto indisponível");
+}
+
+12. Crie um objeto pessoa com os atributos nome, peso, altura e temperatura. Faça uma
+saída que verifica se essa pessoa está ou não com febre.
+
+const pessoa = {
+  nome: "Maria",
+  peso: 62,
+  altura: 1.68,
+  temperatura: 38.2
+};
+
+if (pessoa.temperatura >= 37.8) {
+  console.log(pessoa.nome + " está com febre.");
+} else {
+  console.log(pessoa.nome + " não está com febre.");
+}
+
+13. Crie 2 objetos do tipo livro e peça ao usuário para preenche-los. Depois, imprima na tela
+o livro com autoria mais antiga, o livro com mais páginas e o livro com autor brasileiro
+(caso haja).
+
+const livro1 = {
+  titulo: "Dom Casmurro",
+  autor: "Machado de Assis",
+  autorBrasileiro: true,
+  anoPublicacao: 1899,
+  paginas: 256
+};
+
+const livro2 = {
+  titulo: "O Senhor dos Anéis",
+  autor: "J.R.R. Tolkien",
+  autorBrasileiro: false,
+  anoPublicacao: 1954,
+  paginas: 1200
+};
+
+// Livro mais antigo
+const maisAntigo = livro1.anoPublicacao < livro2.anoPublicacao ? livro1 : livro2;
+console.log("Livro mais antigo: " + maisAntigo.titulo);
+
+// Livro com mais páginas
+const maisPaginas = livro1.paginas > livro2.paginas ? livro1 : livro2;
+console.log("Livro com mais páginas: " + maisPaginas.titulo);
+
+// Livro com autor brasileiro (se houver)
+if (livro1.autorBrasileiro) {
+  console.log("Livro com autor brasileiro: " + livro1.titulo);
+} else if (livro2.autorBrasileiro) {
+  console.log("Livro com autor brasileiro: " + livro2.titulo);
+} else {
+  console.log("Nenhum dos livros tem autor brasileiro.");
+}
+
+14. Crie um objeto filme que receba do usuário seu nome e classificação. Em seguida,
+imprima os dados desse filme, informando sua faixa etária classificatória.
+
+const filme = {
+  nome: "Vingadores: Ultimato",
+  faixaEtaria: "12 anos"
+};
+
+console.log("Filme: " + filme.nome);
+console.log("Classificação indicativa: " + filme.faixaEtaria);
+
+15. Quais as diferenças entre criar uma variável do tipo const, var e let? Cite exemplos.
+
+var: escopo de função (não respeita bloco {}), pode ser redeclarada e reatribuída, sofre hoisting (é "elevada" ao topo, ficando undefined até a linha de atribuição).
+let: escopo de bloco, pode ser reatribuída, mas não redeclarada no mesmo escopo.
+const: escopo de bloco, não pode ser reatribuída nem redeclarada (o valor é constante) — porém, se for um objeto ou array, suas propriedades internas ainda podem ser alteradas.
+
+var x = 10;
+x = 20;      // ok
+var x = 30;  // ok (redeclaração permitida)
+
+let y = 10;
+y = 20;      // ok
+// let y = 30; // erro: não pode redeclarar
+
+const z = 10;
+// z = 20;   // erro: não pode reatribuir
+
+const obj = { nome: "Ana" };
+obj.nome = "Maria"; // ok, pois estamos alterando uma propriedade, não a referência
+
+16. Responda no console o que será impresso ou qual erro ocorrerá.
+
+let y = 20;
+const z = 30;
+
+console.log("1) x =", x); // ???
+
+x = 15;
+y = 25;
+
+console.log(x); // ???
+console.log(y); // ???
+console.log(z); // ???
+var x = 10;
+
+{
+    var a = 100;
+    let b = 200;
+    const c = 300;
+    console.log(a); // ???
+    console.log(b); // ???
+    console.log(c); // ???
+}
+
+console.log(a); // ???
+console.log(typeof b); // ???
+console.log(typeof c); // ???
+
+{
+    var m = "var da função";
+    let n = "let da função";
+    const o = "const da função";
+    console.log(m); // ???
+    console.log(n); // ???
+    console.log(o); // ???
+}
+
+console.log(typeof m); // ???
+console.log(typeof n); // ???
+console.log(typeof o); // ???
+
+1) x = undefined
+15
+25
+30
+100
+200
+300
+100
+undefined
+undefined
+var da função
+let da função
+const da função
+string
+undefined
+undefined
+
+
+17. Qual a diferença entre JavaScript e Java?
+
+Apesar do nome parecido, são linguagens completamente diferentes:
+
+Java: linguagem compilada, fortemente tipada, orientada a objetos, usada em aplicações desktop, mobile (Android) e back-end. Roda em uma JVM (Java Virtual Machine).
+JavaScript: linguagem interpretada, dinamicamente tipada, criada originalmente para rodar em navegadores e tornar páginas web interativas; hoje também roda no back-end (Node.js).
+
+O nome "JavaScript" foi uma estratégia de marketing na época de seu lançamento, aproveitando a popularidade do Java, mas as linguagens têm sintaxe, propósito e execução distintos.
+
+18. Qual a diferença entre == e === no JavaScript? Dê exemplos práticos.
+
+== (igualdade solta): compara valores, fazendo conversão de tipo (coerção) se necessário.
+=== (igualdade estrita): compara valor e tipo, sem conversão.
+
+console.log(5 == "5");   // true  (converte a string "5" para número)
+console.log(5 === "5");  // false (tipos diferentes: number x string)
+
+console.log(0 == false); // true
+console.log(0 === false);// false
+
+console.log(null == undefined);  // true
+console.log(null === undefined); // false
+
+19. O que são operadores lógicos (&&, ||, !) e como eles podem ser usados em condicionais?Exemplifique.
+
+&& (E): verdadeiro somente se ambas as condições forem verdadeiras.
+|| (OU): verdadeiro se pelo menos uma condição for verdadeira.
+! (NÃO): inverte o valor lógico.
+
+const idade = 20;
+const temCarteira = true;
+
+if (idade >= 18 && temCarteira) {
+  console.log("Pode dirigir");
+}
+
+const feriado = false;
+const fimDeSemana = true;
+if (feriado || fimDeSemana) {
+  console.log("Dia de folga");
+}
+
+if (!feriado) {
+  console.log("Não é feriado");
+}
+
+20. É possível adicionar novas propriedades a um objeto depois de criado? Como?
+
+undefined: uma variável foi declarada, mas ainda não recebeu valor (o próprio JavaScript atribui isso automaticamente).
+null: representa a ausência intencional de valor, atribuída explicitamente pelo programador.
+javascript
+let a;
+console.log(a); // undefined (declarada, sem valor)
+
+let b = null;
+console.log(b); // null (valor vazio atribuído de propósito)
+
+21. Qual a diferença entre null e undefined no JavaScript?
+
+undefined: uma variável foi declarada, mas ainda não recebeu valor (o próprio JavaScript atribui isso automaticamente).
+null: representa a ausência intencional de valor, atribuída explicitamente pelo programador.
+javascript
+let a;
+console.log(a); // undefined (declarada, sem valor)
+
+let b = null;
+console.log(b); // null (valor vazio atribuído de propósito)
+
+22. O que é um objeto em JavaScript e como ele é declarado? Dê um exemplo básico.
+
+Um objeto é uma coleção de pares chave-valor, usado para representar entidades do mundo real com propriedades e comportamentos (métodos).
+
+javascript
+const pessoa = {
+  nome: "João",
+  idade: 25,
+  cumprimentar: function() {
+    console.log("Olá, meu nome é " + this.nome);
+  }
+};
+
+console.log(pessoa.nome);   
+pessoa.cumprimentar();      
+
+23. Crie um programa em JS que defina 2 objetos pokemãos, leia os dados desses objetos
+assumindo que possuem, id, nome, tipo(agua, fogo ou terra) e poder(sortear um valor
+entre 1 e 10 preenchido automático). Logo em seguida, coloque esses dois pokemãos
+para batalhar e apresente na tela o resultado da luta. Caso um dos pokemãos tenha
+vantagem elemental de tipo sobre o outro, respeitando (agua ganha de fogo, fogo ganha
+de terra, terra ganha de agua), o pokemão que possui vantagem deve ganhar 3 pontos
+de poder durante o calculo do resultado da luta.
+
+function criarPokemon(id, nome, tipo) {
+  return {
+    id: id,
+    nome: nome,
+    tipo: tipo, // "agua", "fogo" ou "terra"
+    poder: Math.floor(Math.random() * 10) + 1 // valor entre 1 e 10
+  };
+}
+
+const pokemon1 = criarPokemon(1, "Squirtle", "agua");
+const pokemon2 = criarPokemon(2, "Charmander", "fogo");
+
+function temVantagem(atacante, defensor) {
+  return (
+    (atacante.tipo === "agua" && defensor.tipo === "fogo") ||
+    (atacante.tipo === "fogo" && defensor.tipo === "terra") ||
+    (atacante.tipo === "terra" && defensor.tipo === "agua")
+  );
+}
+
+// Aplica bônus de vantagem elemental
+let poder1 = pokemon1.poder;
+let poder2 = pokemon2.poder;
+
+if (temVantagem(pokemon1, pokemon2)) {
+  poder1 += 3;
+} else if (temVantagem(pokemon2, pokemon1)) {
+  poder2 += 3;
+}
+
+console.log(`${pokemon1.nome} (${pokemon1.tipo}) - Poder: ${poder1}`);
+console.log(`${pokemon2.nome} (${pokemon2.tipo}) - Poder: ${poder2}`);
+
+if (poder1 > poder2) {
+  console.log("Vencedor: " + pokemon1.nome);
+} else if (poder2 > poder1) {
+  console.log("Vencedor: " + pokemon2.nome);
+} else {
+  console.log("Empate!");
+}
