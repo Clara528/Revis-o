@@ -38,10 +38,6 @@ tag style exemplo:
 
 </style>
 
-
-
-
-
 **3.** Escreva as regras CSS para estilizar uma div com a classe .card-produto com as
 
 seguintes exigências: Largura fixa de 300px e centralizada horizontalmente na página.
